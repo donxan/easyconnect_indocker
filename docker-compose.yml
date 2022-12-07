@@ -1,7 +1,7 @@
 version: '2'
 services:
     easyconnect:
-        image: aikerf/docker-easyconnect:7.6.3 # latest, vncless, 7.6.3, vncless-7.6.3, 7.6.7, vncless-7.6.7
+        image: aikerf/easyconnect_indocker:7.6.3 # latest, vncless, 7.6.3, vncless-7.6.3, 7.6.7, vncless-7.6.7
         devices:
           - /dev/dri
           - /dev/net/tun
