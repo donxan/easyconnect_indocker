@@ -4,7 +4,7 @@
 
 基于 EasyConnect 官方“Linux”版的 deb 包以及 [@shmille](https://github.com/shmilee) 提供的[命令行版客户端 deb 包](https://github.com/shmilee/scripts/releases/download/v0.0.1/easyconn_7.6.8.2-ubuntu_amd64.deb)。
 
-另有 [@shmilee](https://github.com/shmilee) 的 [easyconnect-in-docker 方案](https://github.com/shmilee/scripts/tree/master/easyconnect-in-docker)（另见 [#35](https://github.com/Hagb/docker-easyconnect/issues/35)）实现了多 EasyConnect 版本共用容器，其中还有另一个[纯 cli 版本的容器](https://github.com/shmilee/scripts/tree/master/easyconnect-in-docker/only-cli)。
+另有 [@shmilee](https://github.com/shmilee) 的 [easyconnect-in-docker 方案](https://github.com/shmilee/scripts/tree/master/easyconnect-in-docker)（另见 [#35](https://github.com/aikerf/easyconnect_indocker/issues/35)）实现了多 EasyConnect 版本共用容器，其中还有另一个[纯 cli 版本的容器](https://github.com/shmilee/scripts/tree/master/easyconnect-in-docker/only-cli)。
 
 望批评、指正。欢迎提交 issue、PR，包括但不仅限于 bug、各种疑问、代码和文档的改进。
 
@@ -17,7 +17,7 @@
 1. [安装Docker并运行](https://docs.docker.com/get-docker/)；
 2.  在终端输入：
 	``` bash
-	docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -p 127.0.0.1:1080:1080 -p 127.0.0.1:8888:8888 -e EC_VER=7.6.3 -e CLI_OPTS="-d vpnaddress -u username -p password" hagb/docker-easyconnect:cli
+	docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -p 127.0.0.1:1080:1080 -p 127.0.0.1:8888:8888 -e EC_VER=7.6.3 -e CLI_OPTS="-d vpnaddress -u username -p password" aikerf/easyconnect_indocker:cli
 	```
 	其中 `-e EC_VER=7.6.3` 表示使用 `7.6.3` 版本的 EasyConnect，请根据实际情况修改版本号；
 3. 根据提示输入服务器地址、登录凭据；
@@ -27,7 +27,7 @@
 ### 图形界面版
 
 1. [安装Docker并运行](https://docs.docker.com/get-docker/)；
-2. 在终端输入： `docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -e PASSWORD=xxxx -v $HOME/.ecdata:/root -p 127.0.0.1:5901:5901 -p 127.0.0.1:1080:1080 -p 127.0.0.1:8888:8888 hagb/docker-easyconnect:7.6.3`（末尾 EasyConnect 版本号 `7.6.3` 请根据实际情况修改）；
+2. 在终端输入： `docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -e PASSWORD=xxxx -v $HOME/.ecdata:/root -p 127.0.0.1:5901:5901 -p 127.0.0.1:1080:1080 -p 127.0.0.1:8888:8888 aikerf/easyconnect_indocker:7.6.3`（末尾 EasyConnect 版本号 `7.6.3` 请根据实际情况修改）；
 3. 使用vnc客户端连接vnc， 地址：127.0.0.1, 端口: 5901, 密码 xxxx ;
 4. 成功连上后你应该能看到easyconnect的登录窗口，填写并登录easyconnect；
 5. 浏览器（或其他支持的应用）可配置socks5代理（可以通过插件配置），地址 `127.0.0.1`, 端口 `1080`；也可以使用 http 代理，地址 `127.0.0.1`, 端口 `8888`。
@@ -54,7 +54,7 @@
 ### 从 Docker Hub 上直接获取：
 
 ```
-docker pull hagb/docker-easyconnect:TAG
+docker pull aikerf/easyconnect_indocker:TAG
 ```
 
 其中 TAG 可以是如下值（不带 VNC 服务端的 image 比带 VNC 服务端的 image 小）：
